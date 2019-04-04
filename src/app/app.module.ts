@@ -8,6 +8,10 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ServiceProvider } from '../providers/salesforce-service';
+import { AutenticateService } from './../providers/autenticate/autenticate-service-salesforce';
+import { ContactService } from './../providers/contact/contact-service-salesforce';
+import { AppPreferences } from '@ionic-native/app-preferences';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage
   ],
   imports: [
-    BrowserModule,
+BrowserModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -28,6 +32,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    ServiceProvider,
+    AutenticateService,
+    ContactService,
+    AppPreferences,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -2,7 +2,6 @@ import { Component, NgZone } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ServiceProvider } from './../../providers/salesforce-service';
 import { AppPreferences } from '@ionic-native/app-preferences';
-import { ListPage } from '../list/list';
 
 @Component({
   selector: 'page-home',
@@ -11,26 +10,22 @@ import { ListPage } from '../list/list';
 export class HomePage {
 
   value: number;
-  contacts: Array<any>;
+  contacts: Array<{Name: string, Email: string, Phone: string, MailingStreet: string}> = [];
 
   constructor(public navCtrl: NavController, public service: ServiceProvider, public zone: NgZone,  public appPreferences: AppPreferences) {
-    
-  }
 
-  querySoup(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.service.getContactService().queryAllFromSoup("Id", "ascending", 1000, (response) => {
-        this.contacts = response.currentPageOrderedEntries;
-        resolve();
-      }, this.error)
+    this.querySmartFromSoup().then(() => {
+    }).catch((err) => {
+      this.error(err);
     });
   }
 
   querySmartFromSoup(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.service.getContactService().querySmartFromSoup("SELECT {Contact:Id} FROM {Contact}", (response) => {
-        this.contacts = response.currentPageOrderedEntries;
-        console.log(response);
+      this.service.getContactService().querySmartFromSoup("SELECT {Contact:_soup} FROM {Contact}", (response) => {
+        response.currentPageOrderedEntries.map(value => {
+          this.contacts.push(value[0]);
+        });
         resolve();
       }, this.error)
     });
@@ -38,11 +33,12 @@ export class HomePage {
 
   sync(): void  {
 
-
       this.service.getContactService().syncDown(this.handleProgress, this).then(() => {
-        this.value = 100;
+        console.log("SyncDown contact");
 
           this.service.getContactService().syncUp(this.handleProgress, this).then(() => {
+
+            console.log("SyncUp contact");
 
             this.setSuccessPreferences().then(() => {
 

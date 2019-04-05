@@ -24,7 +24,7 @@ export class ContactService  {
      * Query para sincronização entre nossa aplicação e o salesforce
      */
     targetSync = {
-        type: "soql", query: "SELECT Id, AccountId, Description, Email, MailingAddress, MailingStreet, MailingCity, MailingState, MailingPostalCode, Name, FirstName, LastName, Phone, Office__c FROM Contact"
+        type: "soql", query: "SELECT Id, AccountId, Description, Email, MailingAddress, MailingStreet, MailingCity, MailingState, MailingPostalCode, Name, FirstName, LastName, Phone FROM Contact"
     };
 
     constructor(platform: Platform, private appPreferences: AppPreferences) {

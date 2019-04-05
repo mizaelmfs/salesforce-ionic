@@ -16,7 +16,7 @@ export class ContactModel  {
      * Colunas de nossa tabela seguidamente de seu tipo.
      */
     static indexes = [
-        { path: "Id", type: "string" },{ path: "AccountId", type: "string" },{ path: "Description", type: "string" },{ path: "Email", type: "string" },{ path: "MailingAddress", type: "string" },{ path: "MailingStreet", type: "string" },{ path: "MailingCity", type: "string" },{ path: "MailingState", type: "string" },{ path: "MailingPostalCode", type: "string" },{ path: "Name", type: "string" },{ path: "FirstName", type: "string" },{ path: "LastName", type: "string" },{ path: "Phone", type: "string" },{ path: "Office__c", type: "string" },{ path: "__local__", type: "string" },
+        { path: "Id", type: "string" },{ path: "AccountId", type: "string" },{ path: "Description", type: "string" },{ path: "Email", type: "string" },{ path: "MailingAddress", type: "string" },{ path: "MailingStreet", type: "string" },{ path: "MailingCity", type: "string" },{ path: "MailingState", type: "string" },{ path: "MailingPostalCode", type: "string" },{ path: "Name", type: "string" },{ path: "FirstName", type: "string" },{ path: "LastName", type: "string" },{ path: "Phone", type: "string" },{ path: "__local__", type: "string" },
     ];
     /**
      * Identificação tipo do registro no banco de dados local

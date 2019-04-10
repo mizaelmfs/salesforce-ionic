@@ -2,6 +2,7 @@ import { Platform } from 'ionic-angular';
 import { Injectable } from '@angular/core';
 import { ContactService } from "./contact/contact-service-salesforce";
 import { AutenticateService } from "./autenticate/autenticate-service-salesforce";
+import { AccountService } from './account/account-service-salesforce';
 
 
 /**
@@ -10,8 +11,18 @@ import { AutenticateService } from "./autenticate/autenticate-service-salesforce
 @Injectable()
 export class ServiceProvider  {
     
-    constructor(platform: Platform, public contactService: ContactService, public autenticateService: AutenticateService) {
+    constructor(platform: Platform, 
+        public contactService: ContactService, 
+        public autenticateService: AutenticateService,
+        public accountService: AccountService) {
 
+    }
+
+    /**
+     * provider dos serviÃ§os da entidade Account
+     */
+    getAccountService(){
+        return this.accountService;
     }
 
     /**

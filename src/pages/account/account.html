@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <button ion-button full secondary (click)="sync();">Sync</button>
+
+  <ion-list>
+    <ion-item (click)="goToAccount(account);" *ngFor="let account of accounts">
+      <h2>{{account.Id}}</h2>
+      <h3>{{account.Name}}</h3>
+      <p>{{account.Description}}</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

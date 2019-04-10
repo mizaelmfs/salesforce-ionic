@@ -3,9 +3,10 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import { ContactPage } from '../pages/contact/contact';
 import { AppPreferences } from '@ionic-native/app-preferences';
 import { ServiceProvider } from './../providers/salesforce-service';
+import { AccountPage } from '../pages/account/account';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage }
+      { title: 'Account', component: AccountPage }
     ];
 
   }
@@ -119,7 +120,7 @@ export class MyApp {
 
   verifySyncState() {
     this.appPreferences.fetch('syncOk').then((value) => {
-      this.rootPage = HomePage;
+      this.rootPage = AccountPage;
     }).catch((err) => {
       console.log(err);
     });
